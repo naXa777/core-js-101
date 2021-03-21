@@ -57,7 +57,7 @@ describe('01-strings-tasks', () => {
     assert.equal(tasks.convertToUpperCase('abcdefghijklmnopqrstuvwxyz'), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
   });
 
-  it.optional('extractEmails should extract emails from string list delimeted by semicolons', () => {
+  it.optional('extractEmails should extract emails from string list delimited by semicolons', () => {
     assert.deepEqual(
       tasks.extractEmails('angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com'),
       ['angus.young@gmail.com', 'brian.johnson@hotmail.com', 'bon.scott@yahoo.com'],
@@ -68,7 +68,7 @@ describe('01-strings-tasks', () => {
     );
   });
 
-  it.optional('getRectangleString should return the string reprentation of rectangle with specified size', () => {
+  it.optional('getRectangleString should return the string representation of rectangle with specified size', () => {
     assert.equal(
       tasks.getRectangleString(6, 4),
       // eslint-disable-next-line indent
