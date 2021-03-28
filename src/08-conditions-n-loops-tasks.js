@@ -394,13 +394,13 @@ function isBracketsBalanced(str) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
 /**
- * Returns the commom directory path for specified array of full filenames.
+ * Returns the common directory path for specified array of full filenames.
  *
  * @param {array} pathes
  * @return {string}
@@ -411,13 +411,29 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  function dir(str) {
+    const pos = str.lastIndexOf('/');
+    if (pos < 0) {
+      return str;
+    }
+    return str.slice(0, pos + 1);
+  }
+
+  let common = '';
+  for (let i = 0; i < pathes[0].length; i += 1) {
+    const char = pathes[0][i];
+    if (!pathes.every((path) => path[i] === char)) {
+      return dir(common);
+    }
+    common += char;
+  }
+  return dir(common);
 }
 
 
 /**
- * Returns the product of two specified matrixes.
+ * Returns the product of two specified matrices.
  * See details: https://en.wikipedia.org/wiki/Matrix_multiplication
  *
  * @param {array} m1
