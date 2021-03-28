@@ -403,7 +403,7 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurrences(arr, item) {
+function findAllOccurences(arr, item) {
   return arr
     .filter((it) => it === item)
     .length;
@@ -483,9 +483,18 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  const arr = Array(n).fill(Array(n).fill(1));
-  return arr;
-  // ) { length: n }, (_, i) => Array({ length: n }, (_, j) => +(i === j)));
+  const arr = Array(n)
+    .fill(
+      Array(n)
+        .fill(1),
+    );
+  return arr
+    .map(
+      (row, i) => row
+        .map(
+          (it, j) => +(i === j),
+        ),
+    );
 }
 
 /**
@@ -636,7 +645,7 @@ module.exports = {
   sortDigitNamesByNumericOrder,
   getItemsSum,
   getFalsyValuesCount,
-  findAllOccurences: findAllOccurrences,
+  findAllOccurences,
   sortCitiesArray,
   getIdentityMatrix,
   getIntervalArray,
