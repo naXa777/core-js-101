@@ -295,8 +295,11 @@ function isCreditCardNumber(ccn) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const root = num.toString()
+    .split('')
+    .reduce((sum, x) => sum + +x, 0);
+  return root < 10 ? root : getDigitalRoot(root);
 }
 
 
@@ -321,8 +324,53 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  function isOpeningBracket(bracket, map) {
+    return !!map[bracket];
+  }
+
+  function isClosingBracket(bracket, map) {
+    return Object.values(map).includes(bracket);
+  }
+
+  function isMatching(bracket, prevBracket, map) {
+    if (typeof bracket === 'undefined' || typeof prevBracket === 'undefined') {
+      return false;
+    }
+    return map[prevBracket] === bracket;
+  }
+
+  const bracketsMap = {
+    '[': ']',
+    '(': ')',
+    '{': '}',
+    '<': '>',
+  };
+
+  const brackets = [];
+  for (let i = 0; i < str.length; i += 1) {
+    const char = str[i];
+    const openingBracket = isOpeningBracket(char, bracketsMap);
+    const closingBracket = isClosingBracket(char, bracketsMap);
+    if (openingBracket && closingBracket) {
+      const prevBracket = brackets[brackets.length - 1];
+      if (isMatching(char, prevBracket, bracketsMap)) {
+        brackets.pop();
+      } else {
+        brackets.push(char);
+      }
+    } else if (openingBracket) {
+      brackets.push(char);
+    } else if (closingBracket) {
+      const prevBracket = brackets.pop();
+      if (!isMatching(char, prevBracket, bracketsMap)) {
+        return false;
+      }
+    } else {
+      // ignore other characters
+    }
+  }
+  return brackets.length === 0;
 }
 
 
