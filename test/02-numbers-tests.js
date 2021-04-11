@@ -9,9 +9,9 @@ describe('02-numbers-tasks', () => {
   });
 
   it.optional('getCircleCircumference should return a circumference of circle', () => {
-    assert.equal(tasks.getCircleCircumference(5), 31.41592653589793);
-    assert.equal(tasks.getCircleCircumference(3.14), 19.729201864543903);
-    assert.equal(tasks.getCircleCircumference(0), 0);
+    assert.equal(tasks.getCicleCircumference(5), 31.41592653589793);
+    assert.equal(tasks.getCicleCircumference(3.14), 19.729201864543903);
+    assert.equal(tasks.getCicleCircumference(0), 0);
   });
 
   it.optional('getAverage should return an average of two numbers', () => {
@@ -55,9 +55,9 @@ describe('02-numbers-tasks', () => {
   });
 
   it.optional('getParallelepidedDiagonal should return a diagonal length of the rectangular parallelepiped', () => {
-    assert.equal(tasks.getParallelepidedDiagonal(1, 1, 1), Math.sqrt(3));
-    assert.equal(tasks.getParallelepidedDiagonal(3, 3, 3), Math.sqrt(27));
-    assert.equal(tasks.getParallelepidedDiagonal(1, 2, 3), Math.sqrt(14));
+    assert.equal(tasks.getParallelipidedDiagonal(1, 1, 1), Math.sqrt(3));
+    assert.equal(tasks.getParallelipidedDiagonal(3, 3, 3), Math.sqrt(27));
+    assert.equal(tasks.getParallelipidedDiagonal(1, 2, 3), Math.sqrt(14));
   });
 
   it.optional('roundToPowerOfTen should return an number rounded to specified power of 10', () => {

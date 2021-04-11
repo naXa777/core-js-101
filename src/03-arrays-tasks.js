@@ -403,7 +403,7 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurences(arr, item) {
+function findAllOccurrences(arr, item) {
   return arr
     .filter((it) => it === item)
     .length;
@@ -676,7 +676,7 @@ module.exports = {
   sortDigitNamesByNumericOrder,
   getItemsSum,
   getFalsyValuesCount,
-  findAllOccurences,
+  findAllOccurrences,
   sortCitiesArray,
   getIdentityMatrix,
   getIntervalArray,
