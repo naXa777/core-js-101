@@ -23,8 +23,8 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(/* f, g */) {
-  throw new Error('Not implemented');
+function getComposition(f, g) {
+  return (x) => f(g(x));
 }
 
 
@@ -44,8 +44,8 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (x) => x ** exponent;
 }
 
 
@@ -81,8 +81,14 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const cache = {};
+  return (x) => {
+    if (typeof cache[x] === 'undefined') {
+      cache[x] = func(x);
+    }
+    return cache[x];
+  };
 }
 
 
@@ -101,8 +107,18 @@ function memoize(/* func */) {
  * }, 2);
  * retryer() => 2
  */
-function retry(/* func, attempts */) {
-  throw new Error('Not implemented');
+function retry(func, attempts) {
+  return (...rest) => {
+    const errors = [];
+    for (let i = attempts; i > 0; i -= 1) {
+      try {
+        return func(rest);
+      } catch (error) {
+        errors.push(error);
+      }
+    }
+    throw new Error(errors);
+  };
 }
 
 
@@ -110,7 +126,7 @@ function retry(/* func, attempts */) {
  * Returns the logging wrapper for the specified method,
  * Logger has to log the start and end of calling the specified function.
  * Logger has to log the arguments of invoked function.
- * The fromat of output log is:
+ * The format of output log is:
  * <function name>(<arg1>, <arg2>,...,<argN>) starts
  * <function name>(<arg1>, <arg2>,...,<argN>) ends
  *
@@ -129,8 +145,14 @@ function retry(/* func, attempts */) {
  * cos(3.141592653589793) ends
  *
  */
-function logger(/* func, logFunc */) {
-  throw new Error('Not implemented');
+function logger(func, logFunc) {
+  return (...rest) => {
+    const paramsJson = [...rest].map(JSON.stringify).join(',');
+    logFunc(`${func.name}(${paramsJson}) starts`);
+    const result = func(...rest);
+    logFunc(`${func.name}(${paramsJson}) ends`);
+    return result;
+  };
 }
 
 
