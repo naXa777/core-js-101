@@ -13,7 +13,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         num,
-        `getFizzBuzz shoud return ${num} for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return ${num} for ${num}, but actually ${actual}`,
       );
     });
 
@@ -27,7 +27,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'Fizz',
-        `getFizzBuzz shoud return 'Fizz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'Fizz' for ${num}, but actually ${actual}`,
       );
     });
 
@@ -38,7 +38,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'Buzz',
-        `getFizzBuzz shoud return 'Buzz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'Buzz' for ${num}, but actually ${actual}`,
       );
     });
 
@@ -49,7 +49,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         'FizzBuzz',
-        `getFizzBuzz shoud return 'FizzBuzz' for ${num}, but actually ${actual}`,
+        `getFizzBuzz should return 'FizzBuzz' for ${num}, but actually ${actual}`,
       );
     });
   });
@@ -275,7 +275,7 @@ describe('08-conditions-n-loops-tasks', () => {
       assert.equal(
         actual,
         data.expected,
-        `getIntervalString(${data.a}, ${data.b}, ${data.isStartIncluded}, ${data.isEndIncluded}) shoud return '${data.expected}', but actually '${actual}'`,
+        `getIntervalString(${data.a}, ${data.b}, ${data.isStartIncluded}, ${data.isEndIncluded}) should return '${data.expected}', but actually '${actual}'`,
       );
     });
   });
